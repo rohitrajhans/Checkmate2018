@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+
+
+/*************** QUESTION CARDS*****************************************/
+
+.outer-container {
+    height: 100vh;
+    width: 100vw;
+}
+.question-card {
+    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+    height: 90vh;
+    width: 90vw;
+    transform: translate(-50%,-50%);
+    border: 1px solid black;
+}
+
+.question-card .card {
+    /* background: radial-gradient(#2196F3, #1565C0, #1a237e); */
+    background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+    background-image: linear-gradient(60deg, #3d3393 0%, #2b76b9 37%, #2cacd1 65%, #35eb93 100%);
+    margin: 15px auto;
+    height: 75%;
+    color: white;
+}
+
+.question-card .question-text {
+    padding: 20px;
+    font-size: 18px;
+}
+
+.question-card .thanos img {
+    margin-top: 15px;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 400px;
+}
+
+.question-card .avenger img {
+    margin-top: 15px;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 400px;
+}
+
+.question-card form {
+    margin-top: 40px;
+}
+
+.question-card form button {
+    margin: 0 20px;
+    border-radius: 8px;
+}
+
+
+
+
+
+/* Links*************************************************/
+
+.question-list {
+    margin: 15px;
+    font-size: 20px;
+}
+
+.question-list li {
+    list-style: none;
+    cursor: pointer;
+}
+
+.question-list li a {
+    text-decoration: none;
+}
