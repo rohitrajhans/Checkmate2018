@@ -40,6 +40,7 @@ body {
     object-fit: contain;
     max-width: 100%;
     max-height: 400px;
+    animation: moveImage 1s infinite;
 }
 
 .question-card .avenger img {
@@ -47,6 +48,7 @@ body {
     object-fit: contain;
     max-width: 100%;
     max-height: 400px;
+    animation: moveImage 1s infinite reverse;
 }
 
 .question-card form {
@@ -58,7 +60,23 @@ body {
     border-radius: 8px;
 }
 
-
+/* @keyframes moveImage {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+} */
 
 
 
