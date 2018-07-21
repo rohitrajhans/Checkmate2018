@@ -1,8 +1,18 @@
 # Checkmate - 2018
 
+## API Endpoints
+- Account
+  - register/ 
+  - login/
+  - logout/
+- Manual
+  - man/
+- game/
+- leaderboard/
+- congrats/
+
 ## How to run?
 #### Setting up the Development Environment
-For python3 virtual environment:
 
 1. To install python2.7 virtual environment, [refer this](https://help.dreamhost.com/hc/en-us/articles/215489338-Installing-and-using-virtualenv-with-Python-2)
 
@@ -10,7 +20,7 @@ For python3 virtual environment:
    ```bash
    pip install -r requirements.txt
    ```
-
+   
 #### Running for the first time
 1. To migrate databases:<br>
    ```bash
