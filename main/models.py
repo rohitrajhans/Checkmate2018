@@ -4,9 +4,8 @@ from django.core import validators
 import re
 
 
-class UserProfile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    teamname = models.CharField(max_length=50)
+class TeamProfile(models.Model):
+    team = models.OneToOneField(User, on_delete=models.CASCADE)
     p1_id = models.CharField(max_length=20,validators=[\
         validators.RegexValidator(re.compile('^201[0-9]{1}[0-9A-Z]{4}[0-9]{4}P$'),message='Enter a valid BITS-Mail ID',code='Invalid!')])
     p2_id = models.CharField(null=True,blank=False,max_length=20,validators=[\
@@ -14,4 +13,4 @@ class UserProfile(models.Model):
     score = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.teamname
+        return self.team.name
