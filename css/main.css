@@ -95,3 +95,12 @@ body {
 .question-list li a {
     text-decoration: none;
 }
+
+
+/******** CHARACTER **********/
+
+#character {
+    left: 0px;
+    top: 0px;
+    position: absolute;
+}
