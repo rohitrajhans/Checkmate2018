@@ -2,7 +2,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    overflow: hidden;
 }
 
 
@@ -19,6 +18,7 @@ body {
     width: 90vw;
     transform: translate(-50%,-50%);
     border: 1px solid black;
+    /* overflow: hidden; */
 }
 
 .question-card .card {
@@ -83,24 +83,86 @@ body {
 /* Links*************************************************/
 
 .question-list {
-    margin: 15px;
     font-size: 20px;
+    z-index: 2;
 }
 
 .question-list li {
     list-style: none;
-    cursor: pointer;
 }
 
 .question-list li a {
     text-decoration: none;
+    cursor: pointer;
 }
 
 
 /******** CHARACTER **********/
 
-#character {
-    left: 0px;
-    top: 0px;
+.img-container {
     position: absolute;
+}
+
+#character {
+    transition: all 0.1s linear;
+}
+
+/******* TEMP MAP ****************************/
+
+.tempmap {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background: pink;
+    z-index: -1;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.road1 {
+    position: absolute;
+    left: 10%;
+    height: 95%;
+    width: 5%;
+    top: 0;
+    background: grey;
+}
+
+.road2 {
+    position: absolute;
+    left: 10%;
+    top: 80%;
+    width: 40%;
+    height: 15%;
+    z-index: 10;
+    background: grey;
+}
+
+.road3 {
+    position: absolute;
+    left: 45%;
+    height: 80%;
+    width: 5%;
+    top: 15%;
+    background: grey;
+}
+
+.road4 {
+    position: absolute;
+    left: 45%;
+    top: 15%;
+    width: 40%;
+    height: 15%;
+    z-index: 5;
+    background: grey;
+}
+
+.road5 {
+    position: absolute;
+    left: 80%;
+    height: 85%;
+    width: 5%;
+    top: 15%;
+    background: grey;
 }

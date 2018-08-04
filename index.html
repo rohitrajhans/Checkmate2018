@@ -10,14 +10,21 @@
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-    <img id="character" src="./media/main_character.jpg">
+    <div class="img-container"><img id="character" src="./media/main_character.jpg"></div>
     <div class="game-container">
         <div class="map"></div>
+        <div class="tempmap">
+            <div class="road road1" id="r1"></div>
+            <div class="road road2" id="r2"></div>
+            <div class="road road3" id="r3"></div>
+            <div class="road road4" id="r4"></div>
+            <div class="road road5" id="r5"></div>
+        </div>
         <ul class="question-list" id="question-list">
-            <li data-toggle="modal" data-target="#myModal1"> <a> Question 1 </a></li>
-            <li data-toggle="modal" data-target="#myModal2"> <a> Question 2 </a></li>
-            <li data-toggle="modal" data-target="#myModal3"> <a> Question 3 </a></li>
-            <li data-toggle="modal" data-target="#myModal4"> <a> Question 4 </a></li>
+            <li> <a data-toggle="modal" data-target="#myModal1"> Question 1 </a></li>
+            <li> <a data-toggle="modal" data-target="#myModal2"> Question 2 </a></li>
+            <li> <a data-toggle="modal" data-target="#myModal3"> Question 3 </a></li>
+            <li> <a data-toggle="modal" data-target="#myModal4"> Question 4 </a></li>
         </ul>
     </div>
 
