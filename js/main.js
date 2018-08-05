@@ -12,7 +12,7 @@ var submitBtn = document.getElementsByClassName('submit');
 
 function init() {
     objImage.style.position = 'absolute';
-    objImage.style.left = '160px';
+    objImage.style.left = '130px';
     objImage.style.top = '0px';
     objImage.style.height = '80px';
     objImage.style.width = 'auto';
@@ -58,6 +58,7 @@ function getKeyAndMove(e) {
 
     // Save character on road position
     playerPosition = objImage.getBoundingClientRect();
+    // console.log(playerPosition);
 };
 
 // function isEnclosed(roadList, player) {
@@ -93,7 +94,7 @@ function isEnclosed(roadList, player) {
             pRight = _player$getBoundingCl.right,
             pTop = _player$getBoundingCl.top,
             pBottom = _player$getBoundingCl.bottom;
-        // console.log(pLeft, pTop, left, right, top, bottom);
+            // console.log(pLeft, pTop, left, right, top, bottom);
 
 
         return pLeft >= left && pRight <= right && pTop >= top && pBottom <= bottom;
@@ -179,35 +180,35 @@ function resetPosition() {
 
 /******************** PLAYER SCORES,ETC *******************/
 
-var  score = 0;
-var answers = [];
-/*** Get answers from backend ***/
+// var  score = 0;
+// var answers = [];
+// /*** Get answers from backend ***/
 
-function updateScore() {
+// function updateScore() {
 
-};
+// };
 
-let check = async function validateAnswer(answer) {
+// let check = async function validateAnswer(answer) {
 
-    var answers = await ;
-    return {
+//     var answers = await ;
+//     return {
         
-    }
-};
+//     }
+// };
 
-function submitHandle(idno, value) {
-    // console.log('clicked');
-    console.log(idno);
-    var bool = check(idno, answer);
-};
+// function submitHandle(idno, value) {
+//     // console.log('clicked');
+//     console.log(idno);
+//     var bool = check(idno, answer);
+// };
 
-Array.from(submitBtn).map( function(btn){
-    // console.log(btn);
-    var idno = btn.id.split('')[3];
-    btn.onclick = () => {
-        submitHandle(idno, value);
-    }
-});
+// Array.from(submitBtn).map( function(btn){
+//     // console.log(btn);
+//     var idno = btn.id.split('')[3];
+//     btn.onclick = () => {
+//         submitHandle(idno, value);
+//     }
+// });
 
 
 window.addEventListener('keydown', getKeyAndMove);

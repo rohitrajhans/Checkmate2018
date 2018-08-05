@@ -111,8 +111,8 @@ body {
 
 .tempmap {
     position: absolute;
-    height: 100vh;
-    width: 100vw;
+    height: 768px;
+    width: 1366px;
     background: pink;
     z-index: -1;
     margin: 0;
@@ -122,18 +122,18 @@ body {
 
 .road1 {
     position: absolute;
-    left: 10%;
-    height: 95%;
-    width: 5%;
+    left: 100px;
+    height: 700px;
+    width: 100px;
     top: 0;
     background: #514f4f;
 }
 
 .road2 {
     position: absolute;
-    left: 10%;
-    top: 80%;
-    width: 40%;
+    left: 100px;
+    top: 586px;
+    width: 600px;
     height: 15%;
     z-index: 10;
     background: #514f4f;
@@ -141,29 +141,28 @@ body {
 
 .road3 {
     position: absolute;
-    left: 45%;
-    height: 80%;
-    width: 5%;
-    top: 15%;
+    left: 600px;
+    height: 600px;
+    width: 100px;
+    top: 100px;
     background: #514f4f;
 }
 
 .road4 {
     position: absolute;
-    left: 45%;
-    top: 15%;
-    width: 40%;
-    height: 15%;
-    z-index: 5;
+    left: 600px;
+    top: 100px;
+    width: 600px;
+    height: 100px;
     background: #514f4f;
 }
 
 .road5 {
     position: absolute;
-    left: 80%;
-    height: 85%;
-    width: 5%;
-    top: 15%;
+    left: 1100px;
+    height: 668px;
+    width: 100px;
+    top: 100px;
     background: #514f4f;
 }
 
@@ -181,7 +180,7 @@ body {
     border: 1px solid black;
     border-radius: 50%;
     top: 250px;
-    left: 125px;
+    left: 75px
 }
 
 #ob2 {
@@ -191,7 +190,7 @@ body {
     background: green;
     border: 1px solid black;
     border-radius: 50%;
-    top: 560px;
+    top: 540px;
     left: 540px;
 }
 
@@ -203,7 +202,7 @@ body {
     border: 1px solid black;
     border-radius: 50%;
     top: 250px;
-    left: 665px;
+    left: 705px;
 }
 
 #ob4 {
@@ -213,6 +212,6 @@ body {
     background: green;
     border: 1px solid black;
     border-radius: 50%;
-    top: 170px;
+    top: 150px;
     left: 1000px;
 }
