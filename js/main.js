@@ -6,7 +6,8 @@ var objImage = document.getElementById("character");
 // var imgDiv = document.getElementsByClassName("img-container")[0];
 var road = document.getElementsByClassName("road");
 var playerPosition; // Global variable to store player location
-
+var obstacleList = document.getElementsByClassName("obstacle");
+var submitBtn = document.getElementsByClassName('submit');
 /******************** CHARACTER MOVEMENT **************************/
 
 function init() {
@@ -21,7 +22,7 @@ function getKeyAndMove(e) {
     // console.log("t");
     // playerPosition = objImage.getBoundingClientRect();
     var key_code = e.which || e.keyCode;
-    
+    // console.log(e.keyCode);
     // Checks if character is within the road
     const shouldMove = isEnclosed(
         road, 
@@ -48,6 +49,10 @@ function getKeyAndMove(e) {
             break;
         case 40: //down arrow key`
             moveDown();
+            break;
+        case 32:
+            // hasEncountered(objImage.getBoundingClientRect(), obstacleList);
+            hasEncountered2(objImage.getBoundingClientRect(), obstacleList);
             break;
     };
 
@@ -116,6 +121,94 @@ function moveDown() {
     if(parseInt(objImage.style.top) < window.innerHeight - parseInt(objImage.style.height))
         objImage.style.top = parseInt(objImage.style.top) + 5 + 'px';
 };
+
+// function hasEncountered( playerPosition, obstacleList ) {
+//     var enc = Array.from(obstacleList).map(function(obstacle) {
+//         // console.log(obstacle);
+//         return obstacle.getBoundingClientRect();
+//     }).some( function(obstaclePosition) {
+//         if(
+//             ((playerPosition.left + 30 === obstaclePosition.left) || (playerPosition.left - 30 === obstaclePosition.left)) ||
+//             (playerPosition.right + 30 === obstaclePosition.right) || (playerPosition.right - 30 === obstaclePosition.right) ||
+//             (playerPosition.top + 30 === obstaclePosition.top) || (playerPosition.top - 30 === obstaclePosition.top) ||
+//             (playerPosition.bottom + 30 === obstaclePosition.bottom) || (playerPosition.bottom - 30 === obstaclePosition.bottom)
+//         ) {
+//             $('#myModal1').modal('show');
+//             console.log("encountered");
+//             return 1;
+//         }
+//         console.log("not-encountered");
+//         return 0;
+//     });
+//     return enc;
+// };
+
+function hasEncountered2( playerPosition, obstacleList) {
+    var flag = 0;
+    // console.log(obstacleList);
+    Array.from(obstacleList).map( function(obstacle) {
+        if(!flag) {
+            var obstaclePosition = obstacle.getBoundingClientRect();
+            if(
+                ( Math.abs(playerPosition.left-obstaclePosition.left) < 50 ||
+                Math.abs(playerPosition.right-obstaclePosition.right) < 50 ) &&
+                (Math.abs(playerPosition.top-obstaclePosition.top) < 50 ||
+                Math.abs(playerPosition.bottom-obstaclePosition.bottom) < 50) 
+            ) {
+                // console.log(obstacle.id);
+                var str = obstacle.id.split('');
+                // console.log(str);
+                $('#myModal' + str[2]).modal('show');
+                // console.log("encountered");
+                flag = 1;
+                return 1;
+            };
+            // console.log(playerPosition, obstaclePosition);
+            // console.log("not-encountered");
+            return 0;
+        }
+    })
+};
+
+function resetPosition() {
+
+};
+
+
+
+
+/******************** PLAYER SCORES,ETC *******************/
+
+var  score = 0;
+var answers = [];
+/*** Get answers from backend ***/
+
+function updateScore() {
+
+};
+
+let check = async function validateAnswer(answer) {
+
+    var answers = await ;
+    return {
+        
+    }
+};
+
+function submitHandle(idno, value) {
+    // console.log('clicked');
+    console.log(idno);
+    var bool = check(idno, answer);
+};
+
+Array.from(submitBtn).map( function(btn){
+    // console.log(btn);
+    var idno = btn.id.split('')[3];
+    btn.onclick = () => {
+        submitHandle(idno, value);
+    }
+});
+
 
 window.addEventListener('keydown', getKeyAndMove);
 window.onload = init;

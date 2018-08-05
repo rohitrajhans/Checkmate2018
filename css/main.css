@@ -126,7 +126,7 @@ body {
     height: 95%;
     width: 5%;
     top: 0;
-    background: grey;
+    background: #514f4f;
 }
 
 .road2 {
@@ -136,7 +136,7 @@ body {
     width: 40%;
     height: 15%;
     z-index: 10;
-    background: grey;
+    background: #514f4f;
 }
 
 .road3 {
@@ -145,7 +145,7 @@ body {
     height: 80%;
     width: 5%;
     top: 15%;
-    background: grey;
+    background: #514f4f;
 }
 
 .road4 {
@@ -155,7 +155,7 @@ body {
     width: 40%;
     height: 15%;
     z-index: 5;
-    background: grey;
+    background: #514f4f;
 }
 
 .road5 {
@@ -164,5 +164,55 @@ body {
     height: 85%;
     width: 5%;
     top: 15%;
-    background: grey;
+    background: #514f4f;
+}
+
+/*********************************** OBSTACLES ****************************************/
+
+.obstacles {
+    position: absolute;
+}
+
+#ob1 {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background: green;
+    border: 1px solid black;
+    border-radius: 50%;
+    top: 250px;
+    left: 125px;
+}
+
+#ob2 {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background: green;
+    border: 1px solid black;
+    border-radius: 50%;
+    top: 560px;
+    left: 540px;
+}
+
+#ob3 {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background: green;
+    border: 1px solid black;
+    border-radius: 50%;
+    top: 250px;
+    left: 665px;
+}
+
+#ob4 {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background: green;
+    border: 1px solid black;
+    border-radius: 50%;
+    top: 170px;
+    left: 1000px;
 }
