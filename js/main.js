@@ -1,9 +1,9 @@
 "use strict";
 
-var questionLinks = document.getElementById('question-list').children;
+// var questionLinks = document.getElementById('question-list').children;
 var questionCards = document.getElementsByClassName('question-card');
 var objImage = document.getElementById("character");
-// var imgDiv = document.getElementsByClassName("img-container")[0];
+var imgDiv = document.getElementsByClassName("img-container")[0];
 var road = document.getElementsByClassName("road");
 var playerPosition; // Global variable to store player location
 var obstacleList = document.getElementsByClassName("obstacle");
@@ -160,6 +160,7 @@ function hasEncountered2( playerPosition, obstacleList) {
                 var str = obstacle.id.split('');
                 // console.log(str);
                 $('#myModal' + str[2]).modal('show');
+                document.getElementById('ans'+str[2]).value = '';
                 // console.log("encountered");
                 flag = 1;
                 return 1;
@@ -172,7 +173,9 @@ function hasEncountered2( playerPosition, obstacleList) {
 };
 
 function resetPosition() {
-
+    // console.log('clicked');
+    objImage.style.left = '130px';
+    objImage.style.top = '0px';
 };
 
 
@@ -180,36 +183,43 @@ function resetPosition() {
 
 /******************** PLAYER SCORES,ETC *******************/
 
-// var  score = 0;
-// var answers = [];
-// /*** Get answers from backend ***/
+var  score = 0;
+var answers = ["1","2","3","4"];
+var scores = [10,20,30,40]
+/*** Get answers from backend ***/
 
-// function updateScore() {
+function updateScore(idno) {
+    score += scores[idno-1];
+    var scoreboard = document.getElementById('playerScore');
+    scoreboard.innerHTML = 'Score: ' + score;
+    return;
+};
 
-// };
+function validateAnswer(idno, answer) {
+    // console.log(answers[idno-1], answer);
+    if( answers[idno-1] === answer) {
+        alert('correct answer')
+        updateScore(idno);
+        return;
+    }
+    alert('Answer galat hai');
+    return;
+};
 
-// let check = async function validateAnswer(answer) {
+function submitHandle(idno) {
+    var inputValue = document.getElementById('ans'+idno).value;
+    // console.log(idno, inputValue);
+    validateAnswer(idno, inputValue);
+    $('#myModal' + idno).modal('hide');
+};
 
-//     var answers = await ;
-//     return {
-        
-//     }
-// };
-
-// function submitHandle(idno, value) {
-//     // console.log('clicked');
-//     console.log(idno);
-//     var bool = check(idno, answer);
-// };
-
-// Array.from(submitBtn).map( function(btn){
-//     // console.log(btn);
-//     var idno = btn.id.split('')[3];
-//     btn.onclick = () => {
-//         submitHandle(idno, value);
-//     }
-// });
-
+Array.from(submitBtn).map( function(btn){
+    // console.log(btn);
+    var idno = btn.id.split('')[3];
+    btn.onclick = () => {
+        submitHandle(idno);
+    }
+});
 
 window.addEventListener('keydown', getKeyAndMove);
 window.onload = init;

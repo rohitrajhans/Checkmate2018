@@ -215,3 +215,16 @@ body {
     top: 150px;
     left: 1000px;
 }
+
+/**************/
+
+.scoreboard {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    padding: 15px;
+}
+
+#playerScore {
+    font-size: 25px;
+}
