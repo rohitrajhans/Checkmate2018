@@ -13,4 +13,4 @@ class TeamProfile(models.Model):
     score = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.team.name
+        return self.team.username

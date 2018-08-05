@@ -7,7 +7,8 @@ from .forms import TeamForm
 
 
 def index(request):
-    return render(request, 'main/index.html', {})
+    answers = []
+    return render(request, 'main/index.html', {'answers': answers})
 
 def register(request):
     registered = False
@@ -15,8 +16,13 @@ def register(request):
         team_form = TeamForm(data=request.POST)
         if team_form.is_valid():
             team = team_form.save()
-            for pteam in TeamProfile.objects.all():
-                if pteam.p1_id == team.p1_id or pteam.p2_id == team.p2_id:
+            if team.p1_id == team.p2_id:
+                print("Same BITS ID used for the same team.")
+                return render(request, 'index/', {})
+            registered_teams = TeamProfile.objects.all()
+            for registered_team in registered_teams:
+                if (registered_team.p1_id == team.p1_id or registered_team.p2_id == team.p2_id or
+                    registered_team.p1_id == team.p2_id or registered_team.p2_id == team.p1_id):
                     print("Same BITS ID used across different teams.")
                     return render(request, 'index/', {})
             team.save()
