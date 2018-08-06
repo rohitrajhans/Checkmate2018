@@ -14,8 +14,8 @@ body {
 }
 .question-card {
     background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
-    height: 90vh;
-    width: 90vw;
+    height: 90%;
+    width: 90%;
     transform: translate(-50%,-50%);
     border: 1px solid black;
     /* overflow: hidden; */
@@ -27,6 +27,8 @@ body {
     background-image: linear-gradient(60deg, #3d3393 0%, #2b76b9 37%, #2cacd1 65%, #35eb93 100%);
     margin: 15px auto;
     height: 75%;
+    overflow: hidden;
+    word-wrap: break-word;
     color: white;
 }
 
@@ -169,51 +171,45 @@ body {
 /*********************************** OBSTACLES ****************************************/
 
 .obstacles {
-    position: absolute;
 }
 
-#ob1 {
-    position: relative;
+.obstacles .obstacle {
+    animation: glow 2s linear alternate infinite, highlight 0.5s linear alternate infinite;
+    position: absolute;
     height: 20px;
     width: 20px;
     background: green;
     border: 1px solid black;
     border-radius: 50%;
+}
+
+#ob1 {
     top: 250px;
     left: 75px
 }
 
 #ob2 {
-    position: relative;
-    height: 20px;
-    width: 20px;
-    background: green;
-    border: 1px solid black;
-    border-radius: 50%;
-    top: 540px;
+    top: 555px;
     left: 540px;
 }
 
 #ob3 {
-    position: relative;
-    height: 20px;
-    width: 20px;
-    background: green;
-    border: 1px solid black;
-    border-radius: 50%;
     top: 250px;
     left: 705px;
 }
 
 #ob4 {
-    position: relative;
-    height: 20px;
-    width: 20px;
-    background: green;
-    border: 1px solid black;
-    border-radius: 50%;
-    top: 150px;
+    top: 205px;
     left: 1000px;
+}
+
+@keyframes glow {
+    from {
+        background: green;
+    }
+    to {
+        background: red;
+    }
 }
 
 /**************/
@@ -227,4 +223,85 @@ body {
 
 #playerScore {
     font-size: 25px;
+}
+
+
+
+/***************************** RINGS ******************************************/
+
+.rings{
+    position: absolute;
+}
+
+.rings .ring {
+    animation: highlight 0.5s linear alternate infinite, opacity 1s linear, visibilty 1s linear;
+    height: 30px;
+    width: 30px;
+    background: transparent;
+    border-radius: 100%;
+    transform: rotateX(60deg);
+    transform-style: preserve-3d;
+    perspective: 100px;
+    display: none;
+}
+
+
+#ring1 {
+    position: absolute;
+    top: 100px;
+    left: 133px;
+    border: 4px solid #9E9D24;
+    box-shadow: 0px 6px 4px 0px #827717;
+    visibility: visible;
+    opacity: 1;
+}
+
+#ring2 {
+    position: absolute;
+    top: 615px;
+    left: 250px;
+    border: 4px solid #673AB7;
+    box-shadow: 0px 6px 4px 0px #5E35B1;
+    visibility: visible;
+    opacity: 1;
+    display: none;
+}
+
+#ring3 {
+    position: absolute;
+    top: 350px;
+    left: 635px;
+    border: 4px solid #43A047;
+    box-shadow: 0px 6px 4px 0px #388E3C;
+    visibility: visible;
+    opacity: 1;
+    display: none;
+}
+
+#ring4 {
+    position: absolute;
+    top: 125px;
+    left: 800px;
+    border: 4px solid #E64A19;
+    box-shadow: 0px 6px 4px 0px #D84315;
+    visibility: visible;
+    opacity: 1;
+    display: none;
+}
+
+@keyframes highlight {
+    0% {
+        transform: translateY(4px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+
+}
+
+#info {
+    position: absolute;
+    margin: 10px 250px;
+    color: white;
 }

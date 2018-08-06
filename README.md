@@ -1,9 +1,10 @@
 # CHECKMATE 2018
 
 Todo :
+ - Frontend major done. Some animations and design improvements (important) required. Mostly Css additions.
  - Most frontend ready for integration with backend
  - Map needed to finish remaining game
- - Compress images.
- - Webpage should move according to character movement when map exceeds screen size.
- - Currently sizing done in px. Try to make sizing in relative units.
+ - Compress images. (Important)
+ - Webpage should move according to character movement when map exceeds screen size. (minor)
+ - Currently sizing done in px. Try to make sizing in relative units. (Lite)
  - Make leaderboard page, instructions page.

@@ -8,6 +8,7 @@ var road = $(".road");
 var playerPosition; // Global variable to store player location
 var obstacleList = $(".obstacle");
 var submitBtn = $('.submit');
+var rings = $('.ring');
 /******************** CHARACTER MOVEMENT **************************/
 
 function init() {
@@ -41,19 +42,19 @@ function getKeyAndMove(e) {
     // e.preventDefault();
 
     switch (key_code) {
-        case 37: //left arrow key
+        case 65: //left arrow key
             e.preventDefault();
             moveLeft();
             break;
-        case 38: //Up arrow key
+        case 87: //Up arrow key
             e.preventDefault();
             moveUp();
             break;
-        case 39: //right arrow key
+        case 68: //right arrow key
             e.preventDefault();
             moveRight();
             break;
-        case 40: //down arrow key`
+        case 83: //down arrow key
             e.preventDefault();
             moveDown();
             break;
@@ -61,6 +62,7 @@ function getKeyAndMove(e) {
             // hasEncountered(objImage.getBoundingClientRect(), obstacleList);
             e.preventDefault();
             hasEncountered2(objImage.getBoundingClientRect(), obstacleList);
+            hasEncounteredRing(objImage.getBoundingClientRect(), rings);
             break;
     };
 
@@ -156,26 +158,32 @@ function hasEncountered2( playerPosition, obstacleList) {
     var flag = 0;
     // console.log(obstacleList);
     Array.from(obstacleList).map( function(obstacle) {
-        if(!flag) {
-            var obstaclePosition = obstacle.getBoundingClientRect();
-            if(
-                ( Math.abs(playerPosition.left-obstaclePosition.left) < 50 ||
-                Math.abs(playerPosition.right-obstaclePosition.right) < 50 ) &&
-                (Math.abs(playerPosition.top-obstaclePosition.top) < 50 ||
-                Math.abs(playerPosition.bottom-obstaclePosition.bottom) < 50) 
-            ) {
-                // console.log(obstacle.id);
-                var str = obstacle.id.split('');
-                // console.log(str);
-                $('#myModal' + str[2]).modal('show');
-                document.getElementById('ans'+str[2]).value = '';
-                // console.log("encountered");
-                flag = 1;
-                return 1;
-            };
-            // console.log(playerPosition, obstaclePosition);
-            // console.log("not-encountered");
-            return 0;
+        var idno = obstacle.id.split('')[2] - 1;
+        if(!ansBool[idno]) {
+            if( !flag) {
+                var obstaclePosition = obstacle.getBoundingClientRect();
+                if(
+                    ( Math.abs(playerPosition.left-obstaclePosition.left) < 50 ||
+                    Math.abs(playerPosition.right-obstaclePosition.right) < 50 ) &&
+                    (Math.abs(playerPosition.top-obstaclePosition.top) < 50 ||
+                    Math.abs(playerPosition.bottom-obstaclePosition.bottom) < 50) 
+                ) {
+                    // console.log(obstacle.id);
+                    var str = obstacle.id.split('');
+                    // console.log(str);
+                    $('#myModal' + str[2]).modal('show');
+                    document.getElementById('ans'+str[2]).value = '';
+                    // console.log("encountered");
+                    flag = 1;
+                    return 1;
+                };
+                // console.log(playerPosition, obstaclePosition);
+                // console.log("not-encountered");
+                return 0;
+            }
+        }
+        else {
+            return;
         }
     })
 };
@@ -187,17 +195,74 @@ function resetPosition() {
 };
 
 
+function hasEncounteredRing(playerPosition, rings) {
+    var flag = 0;
+    Array.from(rings).map( function(ring) {
+        if(!flag) {
+            var ringPosition = ring.getBoundingClientRect();
+            if(
+                ( Math.abs(playerPosition.left-ringPosition.left) < 50 ||
+                Math.abs(playerPosition.right-ringPosition.right) < 50 ) &&
+                (Math.abs(playerPosition.top-ringPosition.top) < 50 ||
+                Math.abs(playerPosition.bottom-ringPosition.bottom) < 50) 
+            ) {
+                // console.log(ring.id);
+                // var str = ring.id.split('');
+                updateScore(100);
+                var indRing = document.getElementById(ring.id);
+                // indRing.className += " disapperRing";
+                indRing.style.visibility = 'hidden';
+                indRing.style.opacity = 0;
+                // setTimeout( function() {
+                //     indRing.style.display = 'none';
+                // },1000);
+                indRing.style.display = 'none';
+                // console.log(str);
+                // console.log("encountered");
+                flag = 1;
+                return 1;
+            };
+            // console.log(playerPosition, ringPosition);
+            // console.log("not-encountered");
+            return 0;
+        }
+    })
+
+};
+
+function checkAndUpdateRing() {
+    // if player has solved certain number of questions unlock the rings
+    ansBool.map( function(solved, index) {
+        if(solved) {
+            // console.log(index, solved);
+            var id = index+1;
+           document.getElementById('ring'+id).style.display = 'block';
+        }
+    })
+};
+
+
+function disableQuestion(idno) {
+    // console.log(idno);
+    var question = document.getElementById('ob'+idno);
+    question.style.display = 'none';
+}
+
+
+
+
 
 
 /******************** PLAYER SCORES,ETC *******************/
 
 var  score = 0;
 var answers = ["1","2","3","4"];
-var scores = [10,20,30,40]
+var scores = [10,20,30,40];
+var ansBool = [0,0,0,0];
 /*** Get answers from backend ***/
 
-function updateScore(idno) {
-    score += scores[idno-1];
+function updateScore(addScore) {
+    score += addScore;
     var scoreboard = document.getElementById('playerScore');
     scoreboard.innerHTML = 'Score: ' + score;
     return;
@@ -207,7 +272,11 @@ function validateAnswer(idno, answer) {
     // console.log(answers[idno-1], answer);
     if( answers[idno-1] === answer) {
         alert('correct answer')
-        updateScore(idno);
+        updateScore(scores[idno-1]);
+        ansBool[idno-1] = 1;
+        // hide question or do something
+        checkAndUpdateRing();
+        disableQuestion(idno);
         return;
     }
     alert('Answer galat hai');
