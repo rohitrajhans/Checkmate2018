@@ -8,3 +8,8 @@ Todo :
  - Webpage should move according to character movement when map exceeds screen size. (minor)
  - Currently sizing done in px. Try to make sizing in relative units. (Lite)
  - Make leaderboard page, instructions page.
+ - Hide answer variable in frontend and include a timer.
+ 
+Instructions for test play :
+ - Press space to interact with objects
+ - Answers for questions: q.1 - 1, q.2 - 2, q.3 - 3, q.4 - 4
