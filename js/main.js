@@ -1,13 +1,13 @@
 "use strict";
 
 // var questionLinks = document.getElementById('question-list').children;
-var questionCards = document.getElementsByClassName('question-card');
+var questionCards = $('.question-card');
 var objImage = document.getElementById("character");
 var imgDiv = document.getElementsByClassName("img-container")[0];
-var road = document.getElementsByClassName("road");
+var road = $(".road");
 var playerPosition; // Global variable to store player location
-var obstacleList = document.getElementsByClassName("obstacle");
-var submitBtn = document.getElementsByClassName('submit');
+var obstacleList = $(".obstacle");
+var submitBtn = $('.submit');
 /******************** CHARACTER MOVEMENT **************************/
 
 function init() {
@@ -37,21 +37,29 @@ function getKeyAndMove(e) {
         return;
     };
 
+    // console.log(e);
+    // e.preventDefault();
+
     switch (key_code) {
         case 37: //left arrow key
+            e.preventDefault();
             moveLeft();
             break;
         case 38: //Up arrow key
+            e.preventDefault();
             moveUp();
             break;
         case 39: //right arrow key
+            e.preventDefault();
             moveRight();
             break;
         case 40: //down arrow key`
+            e.preventDefault();
             moveDown();
             break;
         case 32:
             // hasEncountered(objImage.getBoundingClientRect(), obstacleList);
+            e.preventDefault();
             hasEncountered2(objImage.getBoundingClientRect(), obstacleList);
             break;
     };
@@ -104,22 +112,22 @@ function isEnclosed(roadList, player) {
 }
 
 function moveLeft() {
-    if(parseInt(objImage.style.left) > 0)
+    // if(parseInt(objImage.style.left) > 0)
         objImage.style.left = parseInt(objImage.style.left) - 5 + 'px';
 };
 
 function moveUp() {
-    if(parseInt(objImage.style.top) > 0)
+    // if(parseInt(objImage.style.top) > 0)
         objImage.style.top = parseInt(objImage.style.top) - 5 + 'px';
 };
 
 function moveRight() {
-    if(parseInt(objImage.style.left) < window.innerWidth - parseInt(objImage.style.height)/2)
+    // if(parseInt(objImage.style.left) < window.innerWidth - parseInt(objImage.style.height)/2)
         objImage.style.left = parseInt(objImage.style.left) + 5 + 'px';
 };
 
 function moveDown() {
-    if(parseInt(objImage.style.top) < window.innerHeight - parseInt(objImage.style.height))
+    // if(parseInt(objImage.style.top) < window.innerHeight - parseInt(objImage.style.height))
         objImage.style.top = parseInt(objImage.style.top) + 5 + 'px';
 };
 
