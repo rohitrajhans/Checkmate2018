@@ -1,5 +1,6 @@
 certifi==2018.4.16
 Django==1.11.10
+django-ipware==2.1.0
 olefile==0.45.1
 Pillow==5.1.0
 pytz==2018.5

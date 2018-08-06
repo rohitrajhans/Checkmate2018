@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from .models import TeamProfile
 from .forms import TeamForm
+from ipware.ip import get_ip
 
 
 def index(request):
@@ -25,14 +26,14 @@ def register(request):
                     registered_team.p1_id == team_data.p2_id or registered_team.p2_id == team_data.p1_id):
                     print("Same BITS ID used across different teams.")
                     return render(request, 'index/', {})
+            team_data.ip_address = get_ip(request)
             team_data.save()
             registered = True
         else:
             print(team_form.errors)
     else:
         team_form = TeamForm()
-
-    return HttpResponseRedirect(reverse('index'))
+        return HttpResponseRedirect(reverse('index'))
 
 def login(request):
     if request.method == 'POST':

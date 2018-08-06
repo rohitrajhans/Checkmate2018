@@ -11,6 +11,12 @@
 - leaderboard/
 - congrats/
 
+## ToDo:
+- Integration with Front-end
+- Leaderboard
+- GameSwitch
+- Timer 
+
 ## How to run?
 #### Setting up the Development Environment
 
