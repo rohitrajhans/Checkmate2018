@@ -11,6 +11,7 @@ class TeamProfile(models.Model):
     p2_id = models.CharField(null=True,blank=False,max_length=20,validators=[\
         validators.RegexValidator(re.compile('^201[0-9]{1}[0-9A-Z]{4}[0-9]{4}P$'),message='Enter a valid BITS-Mail ID',code='Invalid!')])
     score = models.IntegerField(default=0)
+    ip_address = models.CharField(null=True,max_length=20)
 
     def __str__(self):
         return self.team.username

@@ -13,19 +13,19 @@ def index(request):
 def register(request):
     registered = False
     if request.method == 'POST':
-        team_form = TeamForm(data=request.POST)
+        team_form = TeamForm(request.POST)
         if team_form.is_valid():
-            team = team_form.save()
-            if team.p1_id == team.p2_id:
+            team_data = team_form.cleaned_data
+            if team_data.p1_id == team_data.p2_id:
                 print("Same BITS ID used for the same team.")
                 return render(request, 'index/', {})
             registered_teams = TeamProfile.objects.all()
             for registered_team in registered_teams:
-                if (registered_team.p1_id == team.p1_id or registered_team.p2_id == team.p2_id or
-                    registered_team.p1_id == team.p2_id or registered_team.p2_id == team.p1_id):
+                if (registered_team.p1_id == team_data.p1_id or registered_team.p2_id == team_data.p2_id or
+                    registered_team.p1_id == team_data.p2_id or registered_team.p2_id == team_data.p1_id):
                     print("Same BITS ID used across different teams.")
                     return render(request, 'index/', {})
-            team.save()
+            team_data.save()
             registered = True
         else:
             print(team_form.errors)
