@@ -13,3 +13,4 @@ Todo :
 Instructions for test play :
  - Press space to interact with objects
  - Answers for questions: q.1 - 1, q.2 - 2, q.3 - 3, q.4 - 4
+ - use w,s,a,d for navigation

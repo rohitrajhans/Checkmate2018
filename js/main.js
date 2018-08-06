@@ -64,6 +64,8 @@ function getKeyAndMove(e) {
             hasEncountered2(objImage.getBoundingClientRect(), obstacleList);
             hasEncounteredRing(objImage.getBoundingClientRect(), rings);
             break;
+        case 13:
+        e.preventDefault();
     };
 
     // Save character on road position
@@ -247,9 +249,6 @@ function disableQuestion(idno) {
     var question = document.getElementById('ob'+idno);
     question.style.display = 'none';
 }
-
-
-
 
 
 
