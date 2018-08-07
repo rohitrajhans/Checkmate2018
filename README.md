@@ -53,7 +53,7 @@
 #### Deactivating virtual environment at end of session
    ```bash
    deactivate
-   ```
+   ``` 
    
 Please file an issue if you face any problem while running the app.<br> 
 Improvements are always welcome.<br>
