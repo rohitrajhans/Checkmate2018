@@ -38,7 +38,9 @@ def register(request):
 def login(request):
     if request.method == 'POST':
         teamname = request.POST.get('teamname')
-        password = request.POST.get('password') team = authenticate(username=teamname, password=password) if team:
+        password = request.POST.get('password')
+        team = authenticate(username=teamname, password=password)
+        if team:
             login(request, team)
             return HttpResponseRedirect(reverse('index'))
         else:
