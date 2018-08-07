@@ -37,9 +37,7 @@ def register(request):
 def login(request):
     if request.method == 'POST':
         teamname = request.POST.get('teamname')
-        password = request.POST.get('password')
-        team = authenticate(username=teamname, password=password)
-        if team:
+        password = request.POST.get('password') team = authenticate(username=teamname, password=password) if team:
             login(request, team)
             return HttpResponseRedirect(reverse('index'))
         else:
@@ -50,3 +48,14 @@ def login(request):
 def logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
+
+
+def leaderboard(request):
+    teams_list = TeamProfile.objects.all()
+    top5list = teams_list.order_by('score')[:5]
+    current_team = request.team
+    context = {
+        'top5list': top5list,       # List of 5 TeamProfile Objects
+        'current_team': current_team,
+    }
+    return render(request, 'main/leaderboard.html', context)
