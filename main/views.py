@@ -56,7 +56,7 @@ def logout(request):
 def leaderboard(request):
     teams_list = TeamProfile.objects.all()
     top5list = teams_list.order_by('score')[:5]
-    current_team = request.team
+    current_team = request.user
     context = {
         'top5list': top5list,       # List of 5 TeamProfile Objects
         'current_team': current_team,
