@@ -49,6 +49,7 @@ def login(request):
         return HttpResponseRedirect(reverse('index'))
 
 def logout(request):
+    logout(request)
     return HttpResponseRedirect(reverse('index'))
 
 
