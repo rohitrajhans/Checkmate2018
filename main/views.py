@@ -48,7 +48,7 @@ def login(request):
     else:
         return HttpResponseRedirect(reverse('index'))
 
-def logout(request):
+def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
 

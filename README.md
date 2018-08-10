@@ -1,7 +1,7 @@
 # Checkmate - 2018
 
 ## API Endpoints
-- Account
+- Accounts
   - register/ 
   - login/
   - logout/
@@ -13,9 +13,9 @@
 
 ## ToDo:
 - Integration with Front-end
-- Leaderboard
 - GameSwitch
 - Timer 
+- Leaderboard Testing
 
 ## How to run?
 #### Setting up the Development Environment
