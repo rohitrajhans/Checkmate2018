@@ -5,7 +5,14 @@ from django.core.urlresolvers import reverse
 from .models import TeamProfile
 from .forms import TeamForm
 from ipware.ip import get_ip
+import json
+from collections import OrderedDict
 
+####################
+# Answers sent via json using function send_answer
+answers = OrderedDict([("0", "a"), ("1", "b"), ("2","c"), ("3", "d")])
+
+###################################
 
 def index(request):
     answers = []
@@ -62,3 +69,7 @@ def leaderboard(request):
         'current_team': current_team,
     }
     return render(request, 'main/leaderboard.html', context)
+
+
+def send_answer(request):
+    return HttpResponse(json.dumps(answers))

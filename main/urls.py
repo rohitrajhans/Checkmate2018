@@ -8,4 +8,5 @@ urlpatterns = [
     url('login/$', views.login, name='login'),
     url('logout/$', views.logout_view, name='logout'),
     # url('leaderboard/$', views.leaderboard, name='leaderboard'),
+    url('send_answer/$', views.send_answer, name='send_answer')
 ]
