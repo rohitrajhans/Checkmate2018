@@ -44,7 +44,7 @@
         </ul> -->
         <div class="scoreboard">
             <div id="playerScore">Score: 0</div>
-            <button type="button" id="rst" onclick="resetPosition()" class="btn btn-primary"> Reset Position </button>
+            <button type="button" onclick="closeModal()" id="rst" onclick="resetPosition()" class="btn btn-primary"> Reset Position </button>
         </div>
         <h3 id="info">Press Space to interact with objects</h3>
     </div>
@@ -69,7 +69,7 @@
                 <div class="form-group row">
                     <div class="col-sm-6"> <input class="form-control answer" id="ans1" type="text" placeholder="answer"></div>
                     <button type="button" id="sub1" class="btn btn-success col-sm-1 submit"> Submit </button>
-                    <button type="button" class="btn btn-danger col-sm-1" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="closeModal()" class="btn btn-danger col-sm-1" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>
@@ -111,7 +111,7 @@
                 <div class="form-group row">
                     <div class="col-sm-6"> <input class="form-control answer" id="ans3" type="text" placeholder="answer"></div>
                     <button type="button" id="sub3" class="btn btn-success col-sm-1 submit"> Submit </button>
-                    <button type="button" class="btn btn-danger col-sm-1" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="closeModal()" class="btn btn-danger col-sm-1" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>
@@ -132,7 +132,7 @@
                 <div class="form-group row">
                     <div class="col-sm-6"> <input class="form-control answer" id="ans4" type="text" placeholder="answer"></div>
                     <button type="button" id="sub4" class="btn btn-success col-sm-1 submit"> Submit </button>
-                    <button type="button" class="btn btn-danger col-sm-1" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="closeModal()" class="btn btn-danger col-sm-1" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>

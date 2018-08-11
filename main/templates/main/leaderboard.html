@@ -1,14 +1,16 @@
+{% load staticfiles }
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/leaderboard.css">
+    <link rel="stylesheet" href="{% static css/leaderboard.css %}">
     <title>Leaderboard</title>
 </head>
 <body>
     <h1>You're last</h1>
+    <button method="POST" type="submit" action="">Go Back to game</button>
 </body>
-<script src="./js/leaderboard.js"></script>
+<script src="{% static js/leaderboard.js %}"></script>
 </html>

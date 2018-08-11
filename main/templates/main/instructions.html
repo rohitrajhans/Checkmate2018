@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Instructions</title>
-    <link rel="stylesheet" href="./css/instructions.css">
+    <link rel="stylesheet" href="{% static css/instructions.css %}">
 </head>
 <body>
     <h1>Game khello bhai</h1>
-    <button>Start</button>
+    <button method="POST" action="" type="submit">Start</button>
 </body>
-<script src="./js/instructions.js"></script>
+<script src="{% static js/instructions.js %}"></script>
 </html>

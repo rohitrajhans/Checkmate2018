@@ -9,6 +9,7 @@ var playerPosition; // Global variable to store player location
 var obstacleList = $(".obstacle");
 var submitBtn = $('.submit');
 var rings = $('.ring');
+var inQuestion = false;
 /******************** CHARACTER MOVEMENT **************************/
 
 
@@ -46,25 +47,31 @@ function getKeyAndMove(e) {
     switch (key_code) {
         case 65: //left arrow key
             // e.preventDefault();
-            moveLeft();
+            if(!inQuestion)
+                moveLeft();
             break;
         case 87: //Up arrow key
             // e.preventDefault();
-            moveUp();
+            if(!inQuestion)
+                moveUp();
             break;
         case 68: //right arrow key
             // e.preventDefault();
-            moveRight();
+            if(!inQuestion)
+                moveRight();
             break;
         case 83: //down arrow key
             // e.preventDefault();
-            moveDown();
+            if(!inQuestion)
+                moveDown();
             break;
         case 32:
             // hasEncountered(objImage.getBoundingClientRect(), obstacleList);
             // e.preventDefault();
-            hasEncountered2(objImage.getBoundingClientRect(), obstacleList);
-            hasEncounteredRing(objImage.getBoundingClientRect(), rings);
+            if( !inQuestion ) {
+                hasEncountered2(objImage.getBoundingClientRect(), obstacleList);
+                hasEncounteredRing(objImage.getBoundingClientRect(), rings);
+            }   
             break;
         case 13:
     };
@@ -175,7 +182,7 @@ function hasEncountered2( playerPosition, obstacleList) {
                     var str = obstacle.id.split('');
                     // console.log(str);
                     $('#myModal' + str[2]).modal('show');
-                    // inQuestion = true;
+                    inQuestion = true;
                     // $('#myModal' + str[2]).modal({
                     //     backdrop: 'static',
                     //     keyboard: false
@@ -276,6 +283,16 @@ function updateScore(addScore) {
     score += addScore;
     var scoreboard = document.getElementById('playerScore');
     scoreboard.innerHTML = 'Score: ' + score;
+    
+    // POST Score after every correct answer
+    // $.post {
+    //     (/*url*/, {
+    //         score: score
+    //     }, 
+    //     function(data,status){
+    //         console.log(data, status);
+    //     });
+    // };
     return;
 };
 
@@ -299,7 +316,12 @@ function submitHandle(idno) {
     // console.log(idno, inputValue);
     validateAnswer(idno, inputValue);
     $('#myModal' + idno).modal('hide');
+    inQuestion = false;
 };
+
+function closeModal() {
+    inQuestion = false;
+}
 
 Array.from(submitBtn).map( function(btn){
     // console.log(btn);
