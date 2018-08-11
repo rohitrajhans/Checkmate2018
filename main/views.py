@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
 from django.contrib import auth
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
@@ -9,6 +8,7 @@ from .forms import TeamForm, LoginForm
 from ipware.ip import get_ip
 import json
 from collections import OrderedDict
+from django.contrib.auth import authenticate, login, logout as django_logout
 
 ####################
 # Answers sent via json using function send_answer
@@ -153,9 +153,8 @@ def login(request):
         return render(request, 'main/login.html',{'lform':lform,'tform':tform})
 
 def logout_view(request):
-    logout(request)
-    return HttpResponseRedirect(reverse('index'))
-
+    django_logout(request)
+    return render(request, 'main/index.html')
 
 def leaderboard(request):
     teams_list = TeamProfile.objects.all()
