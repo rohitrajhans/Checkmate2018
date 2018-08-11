@@ -24,3 +24,11 @@ class TeamProfile(models.Model):
 
     def __str__(self):
             return self.teamname
+
+class GameSwitch(models.Model):
+        name=models.CharField(null=False,max_length=10)
+        start_game = models.IntegerField(null=False, choices=((0,'0'),(1,'1')),default = 1)
+        end_game = models.IntegerField(null=False, choices=((0,'0'),(1,'1')),default=0)#0 is switch status inactive, 1 is active
+
+        def __str__(self):
+                return self.name

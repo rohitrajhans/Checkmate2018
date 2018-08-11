@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import auth
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
-from .models import TeamProfile, UserProfile
+from .models import TeamProfile, UserProfile, GameSwitch
 from django.contrib.auth.models import User
-from .forms import TeamForm
+from .forms import TeamForm, LoginForm
 from ipware.ip import get_ip
 import json
 from collections import OrderedDict
@@ -102,17 +103,54 @@ def register(request):
 
 
 def login(request):
-    if request.method == 'POST':
-        teamname = request.POST.get('teamname')
-        password = request.POST.get('password')
-        team = authenticate(username=teamname, password=password)
-        if team:
-            login(request, team)
-            return HttpResponseRedirect(reverse('index'))
-        else:
-            return HttpResponse("Invalid login details supplied.")
+    if request.user.is_authenticated() and not request.user.username == "admin":
+        return redirect('index')
     else:
-        return render(request, 'main/login.html', {})
+        print("reachedl0")
+        tform=TeamForm(request.POST)
+        lform = LoginForm(request.POST)
+        if request.method == 'POST':
+            print("reachedl1")
+            if lform.is_valid():
+                print("reachedl2")
+                data=lform.cleaned_data
+                teamname = data['teamname']
+                password = data['password']
+                user = authenticate(username = teamname, password=password)
+                if user is not None:
+                    print("reachedl3")
+                    auth.login(request, user)
+                    return redirect(reverse('index'))
+                else:
+                    print("reachedl4")
+                    resp={
+                    'status':'error',
+                    'msg':'Register before you try to Login!'
+                    }
+                    return HttpResponse(json.dumps(resp), content_type = "application/json",status=500)
+            else:
+                error=json.loads(json.dumps(lform.errors))
+                error1=[]
+                for e in error:
+                    d=e
+                    print("d",d)
+                    if(d in ["password1","teamname1"]):
+                        d=d[:-1]
+                    error1.append(d)
+                    error1.append('-')
+                    error1.append((error[e])[0])
+                    error1.append('<br/>')
+                print(error1)
+                resp={
+                'status':'error',
+                'msg':' '.join(error1)
+                }
+                print("reachedbbbbb")
+                return HttpResponse(json.dumps(resp), content_type = "application/json",status=500)
+        else:
+            lform=LoginForm(request.POST)
+            return render(request, 'main/login.html',{'lform':lform,'tform':tform})
+        return render(request, 'main/login.html',{'lform':lform,'tform':tform})
 
 def logout_view(request):
     logout(request)
