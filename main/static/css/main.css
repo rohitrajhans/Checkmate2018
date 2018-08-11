@@ -1,0 +1,307 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+/*************** QUESTION CARDS*****************************************/
+
+.outer-container {
+    height: 100vh;
+    width: 100vw;
+}
+.question-card {
+    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+    height: 90%;
+    width: 90%;
+    transform: translate(-50%,-50%);
+    border: 1px solid black;
+    /* overflow: hidden; */
+}
+
+.question-card .card {
+    /* background: radial-gradient(#2196F3, #1565C0, #1a237e); */
+    background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+    background-image: linear-gradient(60deg, #3d3393 0%, #2b76b9 37%, #2cacd1 65%, #35eb93 100%);
+    margin: 15px auto;
+    height: 75%;
+    overflow: hidden;
+    word-wrap: break-word;
+    color: white;
+}
+
+.question-card .question-text {
+    padding: 20px;
+    font-size: 18px;
+}
+
+.question-card .thanos img {
+    margin-top: 15px;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 400px;
+    animation: moveImage 1s infinite;
+}
+
+.question-card .avenger img {
+    margin-top: 15px;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 400px;
+    animation: moveImage 1s infinite reverse;
+}
+
+.question-card form {
+    margin-top: 40px;
+}
+
+.question-card form button {
+    margin: 0 20px;
+    border-radius: 8px;
+}
+
+/* @keyframes moveImage {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+} */
+
+
+
+/* Links*************************************************/
+
+.question-list {
+    font-size: 20px;
+    z-index: 2;
+}
+
+.question-list li {
+    list-style: none;
+}
+
+.question-list li a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/******** CHARACTER **********/
+
+.img-container {
+    position: absolute;
+}
+
+#character {
+    transition: all 0.1s linear;
+}
+
+/******* TEMP MAP ****************************/
+
+.tempmap {
+    position: absolute;
+    height: 768px;
+    width: 1366px;
+    background: pink;
+    z-index: -1;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.road1 {
+    position: absolute;
+    left: 100px;
+    height: 700px;
+    width: 100px;
+    top: 0;
+    background: #514f4f;
+}
+
+.road2 {
+    position: absolute;
+    left: 100px;
+    top: 586px;
+    width: 600px;
+    height: 15%;
+    z-index: 10;
+    background: #514f4f;
+}
+
+.road3 {
+    position: absolute;
+    left: 600px;
+    height: 600px;
+    width: 100px;
+    top: 100px;
+    background: #514f4f;
+}
+
+.road4 {
+    position: absolute;
+    left: 600px;
+    top: 100px;
+    width: 600px;
+    height: 100px;
+    background: #514f4f;
+}
+
+.road5 {
+    position: absolute;
+    left: 1100px;
+    height: 668px;
+    width: 100px;
+    top: 100px;
+    background: #514f4f;
+}
+
+/*********************************** OBSTACLES ****************************************/
+
+.obstacles {
+}
+
+.obstacles .obstacle {
+    animation: glow 2s linear alternate infinite, highlight 0.5s linear alternate infinite;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    background: green;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+#ob1 {
+    top: 250px;
+    left: 75px
+}
+
+#ob2 {
+    top: 555px;
+    left: 540px;
+}
+
+#ob3 {
+    top: 250px;
+    left: 705px;
+}
+
+#ob4 {
+    top: 205px;
+    left: 1000px;
+}
+
+@keyframes glow {
+    from {
+        background: green;
+    }
+    to {
+        background: red;
+    }
+}
+
+/**************/
+
+.scoreboard {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    padding: 15px;
+}
+
+#playerScore {
+    font-size: 25px;
+}
+
+
+
+/***************************** RINGS ******************************************/
+
+.rings{
+    position: absolute;
+}
+
+.rings .ring {
+    animation: highlight 0.5s linear alternate infinite, opacity 1s linear, visibilty 1s linear;
+    height: 30px;
+    width: 30px;
+    background: transparent;
+    border-radius: 100%;
+    transform: rotateX(60deg);
+    transform-style: preserve-3d;
+    perspective: 100px;
+    display: none;
+}
+
+
+#ring1 {
+    position: absolute;
+    top: 100px;
+    left: 133px;
+    border: 4px solid #9E9D24;
+    box-shadow: 0px 6px 4px 0px #827717;
+    visibility: visible;
+    opacity: 1;
+}
+
+#ring2 {
+    position: absolute;
+    top: 615px;
+    left: 250px;
+    border: 4px solid #673AB7;
+    box-shadow: 0px 6px 4px 0px #5E35B1;
+    visibility: visible;
+    opacity: 1;
+    display: none;
+}
+
+#ring3 {
+    position: absolute;
+    top: 350px;
+    left: 635px;
+    border: 4px solid #43A047;
+    box-shadow: 0px 6px 4px 0px #388E3C;
+    visibility: visible;
+    opacity: 1;
+    display: none;
+}
+
+#ring4 {
+    position: absolute;
+    top: 125px;
+    left: 800px;
+    border: 4px solid #E64A19;
+    box-shadow: 0px 6px 4px 0px #D84315;
+    visibility: visible;
+    opacity: 1;
+    display: none;
+}
+
+@keyframes highlight {
+    0% {
+        transform: translateY(4px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+
+}
+
+#info {
+    position: absolute;
+    margin: 10px 250px;
+    color: white;
+}

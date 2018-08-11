@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Checkmate Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+
+
+    <input class="retrigger" type="radio" name="rerun" id="retrigger--1" /><input class="retrigger" type="radio" name="rerun" id="retrigger--2" checked="checked" />
+    <div class="bg"></div>
+    <div class="buttons">
+        <label class="button button--1" data-toggle="modal" data-target="#myModal1"> LOGIN </label>
+        <label class="button button--1" data-toggle="modal" data-target="#myModal2">REGISTER</label>
+    </div>
+    <div class="pane">
+        <div class="rotate">
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+            <div class="logo">MARVEL</div>
+        </div>
+    </div>
+
+    <div class="wrapper modal fade" role="dialog" id="myModal1">
+        <form class="form-signin modal-dialog">       
+            <h2 class="form-signin-heading">Login to Play!</h2>
+            <input type="text" class="form-control" name="username" placeholder="Teamname" required="true" autofocus="" />
+            <input type="password" class="form-control" name="password" placeholder="Password" required="true"/>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+        </form>
+    </div>
+
+    <div class="wrapper modal fade" role="dialog" id="myModal2">
+            <form class="form-signin modal-dialog">       
+                <h2 class="form-signin-heading">Login to Play!</h2>
+                <input type="text" class="form-control" name="username" placeholder="Player 1 Name" required="true" autofocus="" />
+                <input type="text" class="form-control" name="username" placeholder="Player 2 Name" />
+                <input type="text" class="form-control" name="teamname" placeholder="Teamname" required="true" />
+                <input type="password" class="form-control" name="password" placeholder="Password" required="true"/>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>   
+            </form>
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>
