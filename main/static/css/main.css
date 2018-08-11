@@ -221,7 +221,7 @@ body {
     padding: 15px;
 }
 
-#playerScore {
+#playerScore, #timer {
     font-size: 25px;
 }
 

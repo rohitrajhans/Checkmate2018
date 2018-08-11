@@ -81,24 +81,6 @@ function getKeyAndMove(e) {
     // console.log(playerPosition);
 };
 
-// function isEnclosed(roadList, player) {
-//     const enc = Array.from(roadList)
-//     .map(road => road.getBoundingClientRect())
-//     .some(roadCoordinates => {
-//         const {left, right, top, bottom} = roadCoordinates;
-//         const {left: pLeft,
-//             right: pRight, 
-//             top: pTop, 
-//             bottom: pBottom} = player.getBoundingClientRect(); 
-//         // console.log(x, y, left, right, top, bottom);
-//         return pLeft >= left
-//         && pRight <= right
-//         && pTop >= top
-//         && pBottom <= bottom;
-//     })
-//     console.log(enc); 
-//     return enc;
-// }
 
 function isEnclosed(roadList, player) {
     var enc = Array.from(roadList).map(function (road) {
@@ -267,11 +249,12 @@ function disableQuestion(idno) {
 
 /******************** PLAYER SCORES,ETC *******************/
 
-
+var timeleft = 120;
 var answers = ["1","2","3","4"];
 window.onload = $.get( '/send_answer', function( data ) {
     data = JSON.parse(data);
     answers = data;
+    // timeLeft = time;
     // console.log(answers);
 });
 var  score = 0;
@@ -285,14 +268,13 @@ function updateScore(addScore) {
     scoreboard.innerHTML = 'Score: ' + score;
     
     // POST Score after every correct answer
-    // $.post {
-    //     (/*url*/, {
+    // $.post(/*url*/, {
     //         score: score
     //     }, 
     //     function(data,status){
     //         console.log(data, status);
     //     });
-    // };
+    
     return;
 };
 
@@ -330,6 +312,17 @@ Array.from(submitBtn).map( function(btn){
         submitHandle(idno);
     }
 });
+
+function redirectLeaderboard() {
+    // $.post ("",
+    //     {
+    //         time: timeleft
+    //     },
+    //     function(data, success) {
+    //         console.log(data, success);
+    //     }
+    // )
+}
 
 window.addEventListener('keydown', getKeyAndMove);
 window.onload = init;
