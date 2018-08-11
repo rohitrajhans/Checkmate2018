@@ -11,6 +11,8 @@ var submitBtn = $('.submit');
 var rings = $('.ring');
 /******************** CHARACTER MOVEMENT **************************/
 
+
+
 function init() {
     objImage.style.position = 'absolute';
     objImage.style.left = '130px';
@@ -43,29 +45,28 @@ function getKeyAndMove(e) {
 
     switch (key_code) {
         case 65: //left arrow key
-            e.preventDefault();
+            // e.preventDefault();
             moveLeft();
             break;
         case 87: //Up arrow key
-            e.preventDefault();
+            // e.preventDefault();
             moveUp();
             break;
         case 68: //right arrow key
-            e.preventDefault();
+            // e.preventDefault();
             moveRight();
             break;
         case 83: //down arrow key
-            e.preventDefault();
+            // e.preventDefault();
             moveDown();
             break;
         case 32:
             // hasEncountered(objImage.getBoundingClientRect(), obstacleList);
-            e.preventDefault();
+            // e.preventDefault();
             hasEncountered2(objImage.getBoundingClientRect(), obstacleList);
             hasEncounteredRing(objImage.getBoundingClientRect(), rings);
             break;
         case 13:
-        e.preventDefault();
     };
 
     // Save character on road position
@@ -174,6 +175,11 @@ function hasEncountered2( playerPosition, obstacleList) {
                     var str = obstacle.id.split('');
                     // console.log(str);
                     $('#myModal' + str[2]).modal('show');
+                    // inQuestion = true;
+                    // $('#myModal' + str[2]).modal({
+                    //     backdrop: 'static',
+                    //     keyboard: false
+                    // });
                     document.getElementById('ans'+str[2]).value = '';
                     // console.log("encountered");
                     flag = 1;
@@ -254,8 +260,14 @@ function disableQuestion(idno) {
 
 /******************** PLAYER SCORES,ETC *******************/
 
-var  score = 0;
+
 var answers = ["1","2","3","4"];
+window.onload = $.get( '/send_answer', function( data ) {
+    data = JSON.parse(data);
+    answers = data;
+    // console.log(answers);
+});
+var  score = 0;
 var scores = [10,20,30,40];
 var ansBool = [0,0,0,0];
 /*** Get answers from backend ***/

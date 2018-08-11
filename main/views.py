@@ -15,8 +15,7 @@ answers = OrderedDict([("0", "a"), ("1", "b"), ("2","c"), ("3", "d")])
 ###################################
 
 def index(request):
-    answers = []
-    return render(request, 'main/index.html', {'answers': answers})
+    return render(request, 'main/index.html')
 
 def register(request):
     registered = False
@@ -53,7 +52,7 @@ def login(request):
         else:
             return HttpResponse("Invalid login details supplied.")
     else:
-        return HttpResponseRedirect(reverse('index'))
+        return render(request, 'main/login.html', {})
 
 def logout_view(request):
     logout(request)
