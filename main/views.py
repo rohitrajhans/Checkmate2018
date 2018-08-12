@@ -13,8 +13,11 @@ from django.contrib.auth import authenticate, login, logout as django_logout
 answers = OrderedDict([("0", "a"), ("1", "b"), ("2","c"), ("3", "d")])
 
 def index(request):
-    return render(request, 'main/index.html')
-
+    if request.user.is_authenticated and request.user.username != 'admin':
+        return render(request, 'main/index.html',)
+    else:
+        return render(request, 'main/login.html',)
+    
 def register(request):
     up = UserProfile.objects.filter(ip_address=get_ip)
     if up is None or 1:
@@ -102,7 +105,7 @@ def login(request):
                 user = authenticate(username = teamname, password=password)
                 if user is not None:
                     auth.login(request, user)
-                    return redirect(reverse('index'))
+                    return redirect('index')
                 else:
                     resp={
                     'status':'error',
