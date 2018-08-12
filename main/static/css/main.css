@@ -106,7 +106,7 @@ body {
 }
 
 #character {
-    transition: all 0.1s linear;
+    transition: all 0.1s ease-out;
 }
 
 /******* TEMP MAP ****************************/
@@ -115,7 +115,7 @@ body {
     position: absolute;
     height: 768px;
     width: 1366px;
-    background: pink;
+    background: linear-gradient(#cb2d3e,#ef473a);
     z-index: -1;
     margin: 0;
     padding: 0;

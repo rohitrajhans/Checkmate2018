@@ -14,10 +14,18 @@ var inQuestion = false;
 
 
 
+var playerState = {
+    playerPosition : [0,0,0,130],
+    playerScore : 0,
+    questionsSolved : [0,0,0,0],
+}
+
 function init() {
     objImage.style.position = 'absolute';
-    objImage.style.left = '130px';
-    objImage.style.top = '0px';
+    //objImage.style.left = '130px';
+    objImage.style.left = playerState.playerPosition[3] + 'px';
+    //objImage.style.top = '0px';
+    objImage.style.top = playerState.playerPosition[0] + 'px';
     objImage.style.height = '80px';
     objImage.style.width = 'auto';
 }
@@ -249,24 +257,28 @@ function disableQuestion(idno) {
 
 /******************** PLAYER SCORES,ETC *******************/
 
+var maxScore = 500;
 var timeleft = 120;
 var answers = ["1","2","3","4"];
 window.onload = $.get( '/send_answer', function( data ) {
     data = JSON.parse(data);
     answers = data;
+    // playerState = playerState;
     // timeLeft = time;
     // console.log(answers);
 });
-var  score = 0;
+var  score = playerState.playerScore;
 var scores = [10,20,30,40];
-var ansBool = [0,0,0,0];
+var ansBool = playerState.questionsSolved; // 1 if question answered, 0 if not
 /*** Get answers from backend ***/
 
 function updateScore(addScore) {
     score += addScore;
     var scoreboard = document.getElementById('playerScore');
     scoreboard.innerHTML = 'Score: ' + score;
-    
+    if( score == maxScore) {
+        alert('won');
+    }
     // POST Score after every correct answer
     // $.post(/*url*/, {
     //         score: score
@@ -282,10 +294,10 @@ function validateAnswer(idno, answer) {
     // console.log(answers[idno-1], answer);
     if( answers[idno-1] === answer) {
         alert('correct answer')
+        checkAndUpdateRing();
         updateScore(scores[idno-1]);
         ansBool[idno-1] = 1;
         // hide question or do something
-        checkAndUpdateRing();
         disableQuestion(idno);
         return;
     }
@@ -316,7 +328,8 @@ Array.from(submitBtn).map( function(btn){
 function redirectLeaderboard() {
     // $.post ("",
     //     {
-    //         time: timeleft
+    //         time: timeleft,
+    //         playerState: playerState,
     //     },
     //     function(data, success) {
     //         console.log(data, success);
