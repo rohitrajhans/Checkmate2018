@@ -113,13 +113,36 @@ body {
 
 .tempmap {
     position: absolute;
-    height: 768px;
-    width: 1366px;
+    height: 1080px;
+    width: 1920px;
     background: linear-gradient(#cb2d3e,#ef473a);
+    /* background: url('../media/checkfin.svg'); */
+    /* animation: changingBackground 6s ease-in infinite; */
     z-index: -1;
     margin: 0;
     padding: 0;
     overflow: hidden;
+}
+
+@keyframes changingBackground {
+    from {
+        background: linear-gradient(#cb2d3e,#ef473a);   
+    }
+    to {
+        background: linear-gradient(#2C3E50,#4CA1AF);
+    }
+    /* 40% {
+        background: linear-gradient(#42275a, #734b6d);
+    }
+    60% {
+        background: linear-gradient(#C02425, #F0CB35)
+    }
+    80% {
+        background: linear-gradient(#5a3f37, #2c7744);
+    }
+    100% {
+        background: linear-gradient(#cb2d3e,#ef473a);
+    } */
 }
 
 .road1 {
@@ -165,7 +188,7 @@ body {
     height: 668px;
     width: 100px;
     top: 100px;
-    background: #514f4f;
+    background: #514f4f;https://stackoverflow.com/questions/6565357/git-push-requires-username-and-password
 }
 
 /*********************************** OBSTACLES ****************************************/

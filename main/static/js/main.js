@@ -294,10 +294,10 @@ function validateAnswer(idno, answer) {
     // console.log(answers[idno-1], answer);
     if( answers[idno-1] === answer) {
         alert('correct answer')
-        checkAndUpdateRing();
         updateScore(scores[idno-1]);
         ansBool[idno-1] = 1;
         // hide question or do something
+        checkAndUpdateRing();
         disableQuestion(idno);
         return;
     }
